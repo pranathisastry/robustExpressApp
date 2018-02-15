@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title> link change </title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>         
+    </head>
+<body >
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="form-horizontal text-center">
+        <h1 class="my-4"><b>Enter Email </b> </h1>
+      </div>
+      <form  action="http://localhost:3000/link" method="POST" >
+
+      <div class="form-group">
+          <table align="center" class="table table-bordered table-hover">
+            <tr class="text-center">
+
+              <td><label class="control-label col-sm-8"><b> Enter Email ID</b> </label>
+              <input type="email" name="email" class="form-control text-center"  placeholder=" email"></td>
+
+            </tr>
+
+            <tr class="text-center">
+
+              <td>  <button type="submit" value="Set" name="submit"  class="btn btn-default row-group-item">Next </button> </td>
+
+            </tr>
+          </table>
+      </div>
+    </form>
+      </div>
+  </div>
+</div>
+</div>
+     </body>
+
+</html>

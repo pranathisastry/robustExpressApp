@@ -1,0 +1,122 @@
+<html>
+<head>
+     <title>Profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> 
+</head>
+<body>
+
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+         <div class="container">
+           <a class="navbar-brand" href="#">Shoppers-Stop</a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarResponsive">
+             <ul class="navbar-nav ml-auto">
+               <li class="nav-item ">
+                 <a class="btn btn-default row-group-item" href="http://localhost:3000/dashboard">Home
+
+                 </a>
+               </li>
+               <li class="nav-item active">
+                 <a class="btn btn-default row-group-item" href="#">Profile</a>
+                 <span class="sr-only">(current)</span>
+               </li>
+               <li class="nav-item">
+                 <a class="btn btn-default row-group-item" href="http://localhost:3000/cart">Cart
+                   <% if(cart){ %>
+                      <%= cart.totalQuantity %>
+                  <% } else{ %>
+                      0
+                    <% } %>
+                </a>
+               </li>
+               <li class="nav-item">
+                 <a class="btn btn-default row-group-item" href="http://localhost:3000/logout">Logout</a>
+               </li>
+             </ul>
+           </div>
+         </div>
+       </nav>
+
+       <!-- Page Content -->
+<!--       <div class="container">-->
+<div class="cont">
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-lg-3">
+
+      <h2 class="my-4">Shoppers-Stop</h2>
+      <div class="list-group">
+
+  <a href="#" class="list-group-item active">Profile</a>
+
+  <a href="http://localhost:3000/change" class="list-group-item">Change Password</a>
+
+      </div>
+
+    </div>
+    <div class="col-lg-9">
+        <div class="form-horizontal">
+          <h1 class="my-4"><b> <%= user.name %></b> </h1>
+        </div>
+
+            <div class="form-group">
+
+                <label class="control-label col-sm-3"> Name </label>
+                <label>:</label>
+
+                <label class="control-label col-sm-3"><%= user.name %></label>
+
+            </div>
+            <div class="form-group">
+
+                <label class="control-label col-sm-3"> Email ID </label>
+                <label>:</label>
+
+                <label class="control-label col-sm-3"><%= user.email %></label>
+
+            </div>
+            <div class="form-group">
+
+                <label class="control-label col-sm-3"> Contact No.</label>
+                <label>:</label>
+
+                <label class="control-label col-sm-3"><%= user.mobileno %></label>
+
+            </div>
+            <div class="form-group">
+
+                <label class="control-label col-sm-3"> Birth Date </label>
+                <label>:</label>
+
+
+                <label class="control-label col-sm-8"><%= user.bdate %></label>
+            </div>
+            <div class="form-group">
+
+                <label class="control-label col-sm-3"> Gender </label>
+                <label>:</label>
+
+                <label class="control-label col-sm-3"><%= user.gender %></label>
+
+            </div>
+      </div>
+  </div>
+</div>
+</div>
+
+     </body>
+
+</html>

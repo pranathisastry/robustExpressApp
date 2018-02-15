@@ -1,0 +1,184 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+<title>edit product </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+         <div class="container">
+           <a class="navbar-brand" href="#">Experience The New Way Of Shopping</a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarResponsive">
+             <ul class="navbar-nav ml-auto">
+               <li class="nav-item active">
+                 <a class="btn btn-default row-group-item" href="http://localhost:3000/dashboard">Home
+                   <span class="sr-only">(current)</span>
+                 </a>
+               </li>
+               <li class="nav-item">
+                 <a class="btn btn-default row-group-item" href="http://localhost:3000/profile">Profile</a>
+               </li>
+               <li class="nav-item">
+                 <a class="btn btn-default row-group-item" href="http://localhost:3000/cart">Cart
+
+
+                   <% if(cart){ %>
+                      <%= cart.totalQuantity %>
+                  <% } else{ %>
+                      0
+                    <% } %>
+                </a>
+               </li>
+               <li class="nav-item">
+                 <a class="btn btn-default row-group-item" href="http://localhost:3000/logout">Logout</a>
+               </li>
+             </ul>
+           </div>
+         </div>
+       </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+
+          <h2 class="my-4">Shoppers-Stop</h2>
+          <div class="list-group">
+
+			<a href="http://localhost:3000/dashboard" class="list-group-item ">VIEW PRODUCT</a>
+
+			<a href="http://localhost:3000/addProduct" class="list-group-item ">ADD PRODUCT</a>
+
+          </div>
+
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+            <div class="form-horizontal">
+              <h1 class="my-4"><b> Edit <%= product.pName %> Details</b> </h1>
+            </div>
+
+      <form  action="http://localhost:3000/product/<%= product._id %>?_method=PUT" method="POST" enctype="application/x-www-form-urlencoded">
+              <input type="hidden" name="_method" value="PUT">
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Product Name :</label>
+                      <div class="col-sm-8">
+
+                        <input type="text" class="form-control" name="pName" value="<%= product.pName %>" required />
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Category </label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" name="pCategory" value="<%=  product.pCategory %>" required />
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Ideal For :</label>
+                      <div class="col-sm-8">
+                        <select name="pIdeal" class="form-control">
+                          <option value="Man">Men</option>
+                          <option value="Women">Women</option>
+                          <option value="Unisex">Unisex</option>
+                        </select>
+                      </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Price For Sale:</label>
+                      <div class="col-sm-8">
+                        <input type="Number" class="form-control " name="pPrice" value="<%=  product.pPrice %>" required />
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Original Price :</label>
+                      <div class="col-sm-8">
+                        <input type="Number" class="form-control " name="pOPrice" value="<%=  product.pOPrice %>" required />
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Offer Discount :</label>
+                      <div class="col-sm-8">
+                        <input type="Number" class="form-control " name="pDiscount" value="<%=  product.pDiscount %>" required />
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Description :</label>
+                      <div class="col-sm-8">
+                      <textarea class="form-control" name="pDescription" rows="4"  required><%=  product.pDescription %></textarea>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Quantity :</label>
+                      <div class="col-sm-8">
+                        <input type="Number" class="form-control " name="pQuantity" value="<%=  product.pQuantity %>" required/>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Brand Name:</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control " name="pBrand" value="<%=  product.pBrand %>" required />
+                      </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Size:</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control " name="pSize" value="<%=  product.pSize %>" required />
+                      </div>
+                </div>
+
+
+
+              <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+
+                      <button type="submit"  name="submit" class="btn btn-default">Save Details</button>
+
+                  </div>
+              </div>
+        </form>
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript -->
+
+  </body>
+
+</html>

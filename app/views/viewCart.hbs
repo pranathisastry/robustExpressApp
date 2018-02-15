@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+<title>view cart</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>   
+
+  </head>
+
+  <body>
+    <!-- Navigation -->
+
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+         <div class="container">
+           <a class="navbar-brand" href="#">Experience The New Way Of Shopping</a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarResponsive">
+             <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+                 <a class=" btn btn-default row-group-item" href="http://localhost:3000/dashboard">Home
+
+                 </a>
+               </li>
+               <li class="nav-item">
+                 <a class=" btn btn-default row-group-item" href="http://localhost:3000/profile">profile</a>
+               </li>
+               <li class="nav-item active">
+                 <a class=" btn btn-default row-group-item" href="#" >Cart
+
+                   <% if(cart){ %>
+                      <%= cart.totalQuantity %>
+                  <% } else{ %>
+                      0
+                    <% } %>
+                 </a>
+               </li>
+               <li class="nav-item">
+                 <a class=" btn btn-default row-group-item" href="http://localhost:3000/logout" >Logout</a>
+               </li>
+             </ul>
+           </div>
+         </div>
+       </nav>
+
+    <!-- Page Content -->
+    <div class="cont">
+    <div class="container">
+
+      <div class="row">
+
+        <!-- /.col-lg-3 -->
+
+
+          <div class="form-horizontal">
+            <h1 class="my-4"><b> Your Shopping Cart</b> </h1>
+          </div>
+            <div class="col-sm-12">
+            <% if(!cart || cart.empty) {%>
+             <div class="form-group">
+                  <label class="control-label col-sm-3">Your Cart Is Empty...!  </label>
+                  <a href="http://localhost:3000/dashboard" class="btn btn-default row-group-item"> Add Some Product</a>
+              </div>
+            <% } else { %>
+
+              <div class="form-group">
+                  <table align="center" class="table table-bordered  table-hover">
+                    <thead>
+                    <tr class="text-center">
+                      <th><label class="control-label col-sm-8"><b>Product Name</b></label></th>
+                      <th><label class="control-label col-sm-8"><b>Price Per Item </b></label></th>
+                      <th><label class="control-label col-sm-8"><b>Quantity</b> </label></th>
+                      <th><label class="control-label col-sm-8"><b>Price</b></label></th>
+                      <th><label class="control-label col-sm-8"><b>Remove</b></label></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                            <% for(x in cart.items){ %>
+                    <tr class="text-center">
+                      <td> <label class="control-label col-sm-8"><%= cart.items[x].item.pName %></label></td>
+                      <td> <label class="control-label col-sm-8"><%= cart.items[x].item.pPrice %></label></td>
+                      <td>
+                        <a  href="/cart/<%= x %>/deleteOne" class="btn btn-default row-group-item">-</a>
+                        <label class="control-label col-sm-6"><%= cart.items[x].quantity %></label>
+                       <a  href="/cart/<%= x %>/addone" class="btn btn-default row-group-item">+</a>
+                      </td>
+                      <td><label class="control-label col-sm-8"><%= cart.items[x].pPrice %></label></td>
+                      <td><a  href="/cart/<%= x %>/delete" class="btn btn-default row-group-item">X</a></td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                  </table>
+              </div>
+
+
+              <div class="form-group text-center">
+                   <label class="control-label col-sm-3">Total Products </label>
+                   <label class="control-label col-sm-3">:</label>
+                   <label class="control-label col-sm-3"><%= cart.totalQuantity%></label>
+              </div>
+              <div class="form-group text-center" >
+                   <label class="control-label col-sm-3">Total Price </label>
+                   <label class="control-label col-sm-3">:</label>
+                   <label class="control-label col-sm-3">₹ <%= cart.totalPrice %></label>
+              </div>
+            <div class="form-group text-center">
+                <div class="col-sm-offset-2 col-sm-12">
+
+
+                          <a  href="/cart/empty" class="btn btn-default row-group-item ">Empty Cart</a>
+                </div>
+            </div>
+            <% } %>
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+</div>
+    <!-- /.container -->
+</div>
+  </body>
+
+</html>
